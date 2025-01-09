@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ConcertController;
+use App\Http\Controllers\BandController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('concerts', ConcertController::class);
+Route::resource('bands', BandController::class);
+
