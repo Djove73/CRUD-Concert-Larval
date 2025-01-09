@@ -7,59 +7,15 @@ use Illuminate\Http\Request;
 
 class ConcertController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
-    {
-        //
-    }
+{
+    $concerts = Concert::with('bands')->get();
+    return view('concerts.index', compact('concerts'));
+}
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Concert $concert)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Concert $concert)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Concert $concert)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Concert $concert)
-    {
-        //
-    }
+public function show($id)
+{
+    $concert = Concert::with('bands')->findOrFail($id);
+    return view('concerts.show', compact('concert'));
+}
 }
